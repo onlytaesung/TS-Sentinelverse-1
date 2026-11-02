@@ -323,7 +323,7 @@ const dt=(off,hm)=>{const d=new Date(NOW);d.setDate(d.getDate()+off);return `${p
 const TODAY_FULL=`${NOW.getFullYear()}.${p2(NOW.getMonth()+1)}.${p2(NOW.getDate())}`;
 const LOG=[
  [dt(-1,"23:58"),"태산 주변 온도 급상승 감지 · B동 3층 스프링클러 작동"],
- [dt(-1,"23:12"),"태산 안정도 80%로 회복 · 안정 단계 진입"],
+ [dt(-1,"23:12"),"태산 안정도 38%로 하락 · 위험 단계 진입, 즉시 가이딩 필요"],
  [dt(-1,"20:47"),"이한 가이딩 주기 초과 경고 발송"],
  [dt(-1,"16:30"),"재현 B구역 임무 종료, 복귀 보고"],
  [dt(-2,"19:05"),"운학, 휴게실 자판기 앞에서 길 잃음 신고 접수"],
@@ -377,7 +377,7 @@ function renderCenter(){
       </button>`).join("")}</div>
   </div>
   <div class="block"><h2>최근 기록</h2>
-    <ul class="log">${(MATCH_TIME?[[MATCH_TIME,"태산 · 성호 매칭 검사 결과 98% · 적합 판정"]]:[]).concat(ARRIVED?[[ARRIVE_TIME,"신규 각성 가이드 성호 등록 · S급 판정"]]:[]).concat(LOG).map(l=>`<li><time class="mono">${l[0]}</time><span>${l[1]}</span></li>`).join("")}</ul>
+    <ul class="log">${(MATCH_TIME?[[MATCH_TIME,"태산 · 성호 매칭 검사 결과 98% · 적합 판정"]]:[]).concat(ARRIVED?[[dt(2,"10:40"),"태산 안정도 80%로 회복 · 안정 단계 진입"],[ARRIVE_TIME,"신규 각성 가이드 성호 등록 · S급 판정"]]:[]).concat(LOG).map(l=>`<li><time class="mono">${l[0]}</time><span>${l[1]}</span></li>`).join("")}</ul>
   </div>`;
   document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>flashCard(b.dataset.go));
 }
