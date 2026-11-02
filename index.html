@@ -317,7 +317,7 @@ const TAESAN_TESTS=[
  {id:"seongho",rate:null,verdict:"결과 대기"}
 ];
 /* 날짜는 페이지를 연 날 기준 */
-const NOW=new Date(2026,9,3);
+const NOW=new Date(2026,9,4);
 const p2=n=>String(n).padStart(2,"0");
 const dt=(off,hm)=>{const d=new Date(NOW);d.setDate(d.getDate()+off);return `${p2(d.getMonth()+1)}.${p2(d.getDate())} ${hm}`;};
 const TODAY_FULL=`${NOW.getFullYear()}.${p2(NOW.getMonth()+1)}.${p2(NOW.getDate())}`;
@@ -331,7 +331,7 @@ const LOG=[
  [dt(-6,"11:00"),"태산, 센터 소속 가이드 전원과 매칭 부적합 판정"]
 ];
 const byId=id=>AGENTS.find(a=>a.id===id);
-let ARRIVED=true,ARRIVE_TIME=dt(0,"14:26");
+let ARRIVED=true,ARRIVE_TIME=dt(0,"09:15");
 let MATCH_TIME=null;
 const live=()=>AGENTS.filter(a=>a.id!=="seongho"||ARRIVED);
 const roleTxt=r=>r==="s"?"센티넬":"가이드";
