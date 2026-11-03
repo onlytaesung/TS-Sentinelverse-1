@@ -392,7 +392,7 @@ function renderCenter(){
       </button>`).join("")}</div>
   </div>
   <div class="block"><h2>최근 기록</h2>
-    <ul class="log">${(MATCH_TIME?[[MATCH_TIME,"태산 · 성호 매칭 검사 결과 98% · 적합 판정"]]:[]).concat(ARRIVED?[[dt(2,"10:40"),"태산 안정도 80%로 회복 · 안정 단계 진입"],[ARRIVE_TIME,"신규 각성 가이드 성호 등록 · S급 판정"]]:[]).concat(LOG).map(l=>`<li><time class="mono">${l[0]}</time><span>${l[1]}</span></li>`).join("")}</ul>
+    <ul class="log">${(MATCH_TIME?[[MATCH_TIME,"태산 · 성호 매칭 검사 결과 98% · 적합 판정"]]:[]).concat(ARRIVED?[[dt(0,"10:53"),"태산 안정도 80%로 회복 · 안정 단계 진입"],[ARRIVE_TIME,"신규 각성 가이드 성호 등록 · S급 판정"]]:[]).concat(LOG).map(l=>`<li><time class="mono">${l[0]}</time><span>${l[1]}</span></li>`).join("")}</ul>
   </div>`;
   document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>flashCard(b.dataset.go));
 }
@@ -635,8 +635,8 @@ function showMatchRecord(){
   const xl=[0,2,4,6,8].map(i=>`<text x="${X(i)}" y="158" text-anchor="middle">${i}분</text>`).join("");
   const dots=sync.map((v,i)=>`<circle cx="${X(i)}" cy="${Y(v)}" r="${i===8?4.5:2.5}" fill="${i===8?"var(--sen)":"var(--bg)"}" stroke="var(--sen)" stroke-width="1.5"/>`).join("");
   const rows=[["리우",29],["운학",34],["성호",98]].map(([n,v])=>`<div class="rec-bar${v>=80?" hit":""}"><span>${n}</span><div class="track"><i style="width:${v}%"></i></div><span class="v">${v}%</span></div>`).join("");
-  const d=new Date(NOW);d.setDate(d.getDate()+7);
-  const full=`${d.getFullYear()}.${p2(d.getMonth()+1)}.${p2(d.getDate())} 15:30`;
+  const d=new Date(NOW);
+  const full=`${d.getFullYear()}.${p2(d.getMonth()+1)}.${p2(d.getDate())} 10:56`;
   al.innerHTML=`<div class="alert-back"></div>
   <div class="alert-box" role="dialog" aria-modal="true" aria-labelledby="alert-title">
     <div class="alert-head"><span class="siren"></span><span>TEST RECORD · SN-0001</span><span class="mono">${full}</span></div>
@@ -671,7 +671,7 @@ function showMatchRecord(){
 /* 접속 10초 뒤 태산·성호 매칭 결과 */
 function showMatch(){
   const al=$("#alert");if(!al.hidden){setTimeout(showMatch,1500);return;}
-  const d=new Date(NOW);d.setDate(d.getDate()+7);const hm="15:30";
+  const d=new Date(NOW);const hm="10:56";
   MATCH_TIME=`${p2(d.getMonth()+1)}.${p2(d.getDate())} ${hm}`;
   const full=`${d.getFullYear()}.${p2(d.getMonth()+1)}.${p2(d.getDate())} ${hm}`;
   const t=TAESAN_TESTS.find(x=>x.id==="seongho");t.rate=98;t.verdict="적합";
